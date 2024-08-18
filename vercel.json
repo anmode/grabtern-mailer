@@ -11,16 +11,6 @@
         "source": "/send-mail/(.*)",
         "destination": "/send-mail/$1"
       }
-    ],
-    "routes": [
-      {
-        "src": "/",
-        "dest": "/src/index.js"
-      },
-      {
-        "src": "/send-mail",
-        "dest": "/src/index.js"
-      }
     ]
   }
   
