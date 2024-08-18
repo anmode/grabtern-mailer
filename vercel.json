@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/send-mail/(.*)",
+        "destination": "/send-mail/$1"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/src/index.js"
+      },
+      {
+        "src": "/send-mail",
+        "dest": "/src/index.js"
+      }
+    ]
+  }
+  
