@@ -2,7 +2,7 @@
   "name": "grabtern-email-service",
   "version": "1.0.0",
   "description": "This is a email service for grabtern",
-  "main": "index.js",
+  "main": "nodemon src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/index.js"
