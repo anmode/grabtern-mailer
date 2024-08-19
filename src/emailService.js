@@ -1,12 +1,12 @@
-// sendEmail.js
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
-const emailConfig = require("../config/emailConfig");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+const getEmailConfig = require("../config/emailConfig");
 
 module.exports = async function sendEmail(
+  env,
   recepient,
   subject,
   message,
@@ -16,6 +16,10 @@ module.exports = async function sendEmail(
   imageUrl = null,
 ) {
   try {
+    const emailConfig = getEmailConfig(env);
+
+    console.log(emailConfig);
+
     let transporter;
 
     if (emailConfig.auth.type === "OAuth2") {
