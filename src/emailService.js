@@ -18,8 +18,6 @@ module.exports = async function sendEmail(
   try {
     const emailConfig = getEmailConfig(env);
 
-    console.log(emailConfig);
-
     let transporter;
 
     if (emailConfig.auth.type === "OAuth2") {
