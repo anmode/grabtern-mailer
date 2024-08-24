@@ -1,7 +1,7 @@
 
 # Grabtern Email Service API
 
-![Grabtern Logo](https://demomailer.grabtern.in/grab-logo.png)
+![Grabtern Logo](https://demomailer.grabtern.in/static/grab-logo.png)
 
 ## Table of Contents
 

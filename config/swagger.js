@@ -2,7 +2,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 
-const url = process.env.NODE_ENV === 'prod' ? 'https://demomailer.grabtern.in' : 'http://localhost:3000'
+const url = process.env.NODE_ENV === 'dev' ? 'http://localhost:3000' : 'https://demomailer.grabtern.in'
 
 const swaggerDefinition = {
   openapi: '3.0.0',
