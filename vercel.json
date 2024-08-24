@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/send-mail/(.*)",
-        "destination": "/send-mail/$1"
+        "source": "/(.*)",
+        "destination": "/"
       }
     ]
   }
