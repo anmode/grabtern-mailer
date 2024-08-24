@@ -1,7 +1,7 @@
 
 # Grabtern Email Service API
 
-![Grabtern Logo](https://yourlogo.com/logo.png)
+![Grabtern Logo](https://demomailer.grabtern.in/grab-logo.png)
 
 ## Table of Contents
 
@@ -185,4 +185,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any questions or inquiries, please contact:
 
-- **Email**:contact.grabtern@gmail.com
+- **Email**: contact.grabtern@gmail.com
