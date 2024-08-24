@@ -168,6 +168,7 @@ module.exports = async function sendEmail(
     }
 
     const info = await transporter.sendMail(mailOptions);
+    console.log(`Email sent successfully to ${recipient}:`, info.messageId);
     return info;
   } catch (error) {
     console.error("Error in sending email:", error);

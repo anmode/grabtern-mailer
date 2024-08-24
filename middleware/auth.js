@@ -1,12 +1,21 @@
-// Middleware to restrict API requests in production
-const restrictAccess = (req, res, next) => {
-      const allowedDomain = '.grabtern.in';
-      const host = req.get('Host') || '';
-      if (!host.endsWith(allowedDomain)) {
-        return res.status(403).send('Forbidden: Access is restricted to .grabtern.in');
-      }
-    next();
-  };
+const jwt = require('jsonwebtoken');
 
-  module.exports = {restrictAccess};
-  
+const secretKey = process.env.EMAIL_SERVICE_SECRET;
+const restrictAccess = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+      return res.status(401).json({ message: 'Unauthorized: No token provided' });
+    }
+
+    jwt.verify(token, secretKey, (err, decoded) => {
+      if (err) {
+        return res.status(403).json({ message: 'Forbidden: Invalid token' });
+      }
+      
+      next();
+    });
+};
+
+module.exports = { restrictAccess };

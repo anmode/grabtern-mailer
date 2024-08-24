@@ -20,6 +20,7 @@ router.post('/dev', async (req, res) => {
 
 router.post('/prod', restrictAccess, async (req, res) => {
   const { recepient, subject, message, useCalendarInvite, calendarObj, useAttachment, imageUrl } = req.body;
+  console.log(req.body);
   const env = 'prod';
 
   try {
