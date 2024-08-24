@@ -7,7 +7,7 @@ const getEmailConfig = require("../config/emailConfig");
 
 module.exports = async function sendEmail(
   env,
-  recepient,
+  recipient,
   subject,
   message,
   useCalendarInvite = false,
@@ -150,7 +150,7 @@ module.exports = async function sendEmail(
     // Prepare the email options
     const mailOptions = {
       from: emailConfig.auth.user,
-      to: recepient,
+      to: recipient,
       subject: subject,
       html: html,
     };
