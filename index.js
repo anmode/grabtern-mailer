@@ -6,7 +6,7 @@ const path = require('path');
 const emailRoutes = require('./routes/emailRoutes');
 const { rateLimit } = require('./middleware/rateLimiter');
 const { restrictAccess } = require('./middleware/auth');
-const swaggerSpec = require('./config/swagger');
+const setupSwagger = require('./config/swagger');
 
 const app = express();
 
@@ -50,11 +50,8 @@ if (process.env.NODE_ENV === "prod") {
 
 app.use(express.json());
 
-// Serve Swagger UI from static files in the public folder
-app.use('/api-docs', express.static(path.join(__dirname, 'public/dist')));
-app.get('/api-docs/swagger.json', (req, res) => {
-  res.json(swaggerSpec);
-});
+// Setup Swagger using the separate setup file
+setupSwagger(app);
 
 // Serve static files from the "public" directory
 app.use('/static', express.static(path.join(__dirname, 'public')));
