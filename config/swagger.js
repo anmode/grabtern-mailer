@@ -1,8 +1,8 @@
+// swaggerSetup.js
 const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const path = require('path');
 
-
-const url = process.env.NODE_ENV === 'dev' ? 'http://localhost:3000' : 'https://demomailer.grabtern.in'
+const url = process.env.NODE_ENV === 'dev' ? 'http://localhost:3000' : 'https://demomailer.grabtern.in';
 
 const swaggerDefinition = {
   openapi: '3.0.0',
@@ -26,6 +26,4 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
-module.exports = (app) => {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-};
+module.exports = swaggerSpec;

@@ -1,14 +1,16 @@
+// app.js
 const express = require('express');
 require('dotenv').config();
 const cors = require("cors");
-const emailRoutes = require('./routes/emailRoutes');
-const {rateLimit} = require('./middleware/rateLimiter');
-const { restrictAccess } = require('./middleware/auth');
-const setupSwagger = require('./config/swagger');
 const path = require('path');
+const emailRoutes = require('./routes/emailRoutes');
+const { rateLimit } = require('./middleware/rateLimiter');
+const { restrictAccess } = require('./middleware/auth');
+const swaggerSpec = require('./config/swagger');
 
 const app = express();
 
+// CORS setup based on environment
 let corsOptions;
 
 if (process.env.NODE_ENV === "test") {
@@ -36,7 +38,7 @@ app.use(cors(corsOptions));
 
 // Rate limiting middleware
 const rateLimiterMiddleware = rateLimit({
-  windowMs: 15 * 60 * 1000,
+  windowMs: 15 * 60 * 1000, // 15 minutes
   maxRequests: 100,
 });
 
@@ -48,8 +50,11 @@ if (process.env.NODE_ENV === "prod") {
 
 app.use(express.json());
 
-// Swagger setup
-setupSwagger(app); 
+// Serve Swagger UI from static files in the public folder
+app.use('/api-docs', express.static(path.join(__dirname, 'public/dist')));
+app.get('/api-docs/swagger.json', (req, res) => {
+  res.json(swaggerSpec);
+});
 
 // Serve static files from the "public" directory
 app.use('/static', express.static(path.join(__dirname, 'public')));
